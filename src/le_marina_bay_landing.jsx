@@ -43,12 +43,13 @@ const globalStyle = `
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
+  html { scroll-behavior: smooth; }
   @media (max-width: 768px) {
     .hero-title { font-size: 2.6rem !important; }
     .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .rooms-grid { grid-template-columns: 1fr !important; }
     .video-grid { flex-direction: column !important; align-items: center !important; }
-.reviews-grid { grid-template-columns: 1fr !important; }
+    .reviews-grid { grid-template-columns: 1fr !important; }
     .section-inner { padding: 60px 20px !important; }
     .hero-inner { padding: 0 20px !important; }
     .header-cta { display: none !important; }
@@ -175,13 +176,58 @@ function PhotoSlider() {
   )
 }
 
+const WaveIcon = () => (
+  <svg width="28" height="18" viewBox="0 0 28 18" fill="none" aria-hidden="true">
+    <path d="M1 13C5 8 9 17 13 12C17 7 21 17 25 12C27.5 9 28 14 29 11"
+          stroke={GOLD} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1 6C5 1 9 10 13 5C17 0 21 10 25 5C27.5 2 28 7 29 4"
+          stroke={GOLD} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.4"/>
+  </svg>
+)
+
+const BedIcon = () => (
+  <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden="true">
+    <path d="M2 21v-9H26v9" stroke={GOLD} strokeWidth="1.8" strokeLinecap="round"/>
+    <path d="M2 12V6a1 1 0 011-1h22a1 1 0 011 1v6" stroke={GOLD} strokeWidth="1.8" strokeLinecap="round"/>
+    <rect x="3" y="8" width="9" height="4" rx="1.5" stroke={GOLD} strokeWidth="1.5"/>
+    <rect x="16" y="8" width="9" height="4" rx="1.5" stroke={GOLD} strokeWidth="1.5"/>
+  </svg>
+)
+
+const PoolIcon = () => (
+  <svg width="28" height="24" viewBox="0 0 28 24" fill="none" aria-hidden="true">
+    <circle cx="14" cy="5" r="3" stroke={GOLD} strokeWidth="1.8"/>
+    <path d="M14 8v7M10 13l4 2 4-2" stroke={GOLD} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M2 20C5.5 17 8.5 21 12 19C15.5 17 18.5 21 22 19C25.5 17 26.5 20 28 19"
+          stroke={GOLD} strokeWidth="1.8" strokeLinecap="round"/>
+  </svg>
+)
+
+const SunIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <circle cx="14" cy="12" r="4.5" stroke={GOLD} strokeWidth="1.8"/>
+    <path d="M14 3v2.5M14 18.5V21M4.5 12H2M26 12h-2.5M7.2 5.7l1.8 1.8M18.9 17.5l1.8 1.8M5.7 18.9l1.8-1.8M18.9 6.5l1.8-1.8"
+          stroke={GOLD} strokeWidth="1.8" strokeLinecap="round"/>
+    <path d="M6 25h16" stroke={GOLD} strokeWidth="1.8" strokeLinecap="round"/>
+  </svg>
+)
+
+const StarIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <path d="M14 2l3 9.2H26l-7.5 5.4 2.9 9-7.4-5.4-7.4 5.4 2.9-9L2 11.2h9z"
+          stroke={GOLD} strokeWidth="1.8" strokeLinejoin="round" fill="rgba(201,168,76,0.12)"/>
+  </svg>
+)
+
 function FeatureChip({ icon, label }) {
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
       padding: '18px 12px',
     }}>
-      <span style={{ fontSize: 26 }}>{icon}</span>
+      <div style={{ height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {icon}
+      </div>
       <span style={{ fontSize: 13, fontWeight: 500, color: GRAY, textAlign: 'center', lineHeight: 1.3 }}>{label}</span>
     </div>
   )
@@ -299,13 +345,13 @@ export default function LeMarinaLanding() {
         padding: '0 32px', height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{
-            width: 34, height: 34, borderRadius: 8,
-            background: `linear-gradient(135deg, ${GOLD}, #E8C870)`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 16,
-          }}>⚓</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <svg width="44" height="28" viewBox="0 0 44 28" fill="none" aria-hidden="true">
+            <path d="M2 22C7 15 12 25 17 19C22 13 27 25 32 19C37 13 40 21 44 18"
+                  stroke={GOLD} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M2 12C7 5 12 15 17 9C22 3 27 15 32 9C37 3 40 11 44 8"
+                  stroke={GOLD} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.4"/>
+          </svg>
           <span style={{
             fontFamily: 'Playfair Display, serif',
             color: WHITE, fontSize: 17, fontWeight: 600, letterSpacing: '0.02em',
@@ -434,11 +480,11 @@ export default function LeMarinaLanding() {
           }}
         >
           {[
-            { icon: '🌊', label: 'Intracoastal views' },
-            { icon: '🛏', label: '2 bedrooms · 6 guests' },
-            { icon: '🏊', label: 'Pool + hot tub' },
-            { icon: '🏖', label: '5 min to beach' },
-            { icon: '🌟', label: 'Superhost · 4.9 ★' },
+            { icon: <WaveIcon />, label: 'Intracoastal views' },
+            { icon: <BedIcon />, label: '2 bedrooms · 6 guests' },
+            { icon: <PoolIcon />, label: 'Pool + hot tub' },
+            { icon: <SunIcon />, label: '5 min to beach' },
+            { icon: <StarIcon />, label: 'Superhost · 4.9 ★' },
           ].map(f => <FeatureChip key={f.label} {...f} />)}
         </div>
       </section>
@@ -606,15 +652,19 @@ export default function LeMarinaLanding() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {[
-                  { emoji: '🏖', label: 'Sunny Isles Beach', dist: '5 min walk' },
-                  { emoji: '🛍', label: 'Aventura Mall', dist: '10 min drive' },
-                  { emoji: '✈️', label: 'Fort Lauderdale Airport (FLL)', dist: '25 min drive' },
-                  { emoji: '🌆', label: 'Miami / Wynwood', dist: '30 min drive' },
-                  { emoji: '🎰', label: 'Hard Rock Casino', dist: '15 min drive' },
-                ].map(({ emoji, label, dist }) => (
+                  { label: 'Sunny Isles Beach', dist: '5 min walk' },
+                  { label: 'Aventura Mall', dist: '10 min drive' },
+                  { label: 'Fort Lauderdale Airport (FLL)', dist: '25 min drive' },
+                  { label: 'Miami / Wynwood', dist: '30 min drive' },
+                  { label: 'Hard Rock Casino', dist: '15 min drive' },
+                ].map(({ label, dist }) => (
                   <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: `1px solid ${BORDER}` }}>
-                    <span style={{ fontSize: 14, color: TEXT }}>
-                      <span style={{ marginRight: 10 }}>{emoji}</span>{label}
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 14, color: TEXT }}>
+                      <span style={{
+                        width: 7, height: 7, borderRadius: '50%',
+                        background: GOLD, flexShrink: 0, display: 'inline-block',
+                      }} />
+                      {label}
                     </span>
                     <span style={{ fontSize: 13, color: GOLD, fontWeight: 600 }}>{dist}</span>
                   </div>
@@ -739,7 +789,7 @@ export default function LeMarinaLanding() {
         flexWrap: 'wrap', gap: 12,
       }}>
         <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
-          © 2025 Le Marina Bay 409 · Sunny Isles Beach, FL
+          © 2026 Le Marina Bay 409 · Sunny Isles Beach, FL
         </span>
         <a
           href={AIRBNB_URL}
