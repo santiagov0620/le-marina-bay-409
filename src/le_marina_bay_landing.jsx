@@ -137,6 +137,7 @@ function PhotoSlider() {
         <button
           key={dir}
           onClick={action}
+          aria-label={dir === 'prev' ? 'Previous photo' : 'Next photo'}
           style={{
             position: 'absolute', top: '50%', transform: 'translateY(-50%)',
             left, right,
@@ -162,6 +163,7 @@ function PhotoSlider() {
           <button
             key={i}
             onClick={() => setCurrent(i)}
+            aria-label={`View photo ${i + 1}`}
             style={{
               width: i === current ? 20 : 7, height: 7,
               borderRadius: 4, border: 'none', cursor: 'pointer',
@@ -245,6 +247,7 @@ function RoomCard({ photo, tag, title, beds, desc }) {
         <img
           src={photo}
           alt={title}
+          loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span style={{

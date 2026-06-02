@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://santiagov0620.github.io/le-marina-bay-409/sitemap.xml
