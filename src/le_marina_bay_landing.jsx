@@ -16,6 +16,7 @@ import img7  from './assets/1780355677017_image.png'  // intracoastal panoramic 
 import img8  from './assets/1780355707985_image.png'  // pool aerial view
 import img9  from './assets/1780355898792_image.png'  // pool close-up
 import img10 from './assets/1780355911726_image.png'  // building exterior front
+import imgSecondBed from './assets/1780355_second_bedroom.png' // second bedroom — queen + single beds
 
 const PHOTOS = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10]
 
@@ -47,8 +48,7 @@ const globalStyle = `
     .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .rooms-grid { grid-template-columns: 1fr !important; }
     .video-grid { flex-direction: column !important; align-items: center !important; }
-    .copy-grid { grid-template-columns: 1fr !important; }
-    .reviews-grid { grid-template-columns: 1fr !important; }
+.reviews-grid { grid-template-columns: 1fr !important; }
     .section-inner { padding: 60px 20px !important; }
     .hero-inner { padding: 0 20px !important; }
     .header-cta { display: none !important; }
@@ -245,57 +245,6 @@ function VideoPlaceholder({ label }) {
   )
 }
 
-function CopyBlock({ label, content }) {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(content).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
-  }
-
-  return (
-    <div style={{
-      background: WHITE, borderRadius: 12,
-      border: `1px solid ${BORDER}`,
-      overflow: 'hidden',
-      boxShadow: '0 1px 8px rgba(11,47,78,0.06)',
-    }}>
-      <div style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '12px 16px',
-        borderBottom: `1px solid ${BORDER}`,
-        background: '#F8FAFC',
-      }}>
-        <span style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-          {label}
-        </span>
-        <button
-          onClick={handleCopy}
-          style={{
-            background: copied ? '#16A34A' : NAVY,
-            color: WHITE, border: 'none', borderRadius: 6,
-            padding: '5px 12px', fontSize: 12, fontWeight: 600,
-            cursor: 'pointer', transition: 'background 0.2s',
-            display: 'flex', alignItems: 'center', gap: 5,
-          }}
-        >
-          {copied ? '✓ Copied' : 'Copy'}
-        </button>
-      </div>
-      <pre style={{
-        padding: '16px', fontSize: 13, color: TEXT,
-        lineHeight: 1.65, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-        fontFamily: 'inherit', background: WHITE, margin: 0,
-        maxHeight: 280, overflowY: 'auto',
-      }}>
-        {content}
-      </pre>
-    </div>
-  )
-}
-
 function ReviewCard({ name, flag, date, stars, text }) {
   return (
     <div style={{
@@ -324,36 +273,6 @@ function ReviewCard({ name, flag, date, stars, text }) {
     </div>
   )
 }
-
-// ─── Copy content ───────────────────────────────────────────────────────────────
-
-const AIRBNB_TITLE = `★ Superhost · Intracoastal Views · 2BR/2BA · Pool · 5 min to Beach`
-
-const AIRBNB_DESC = `Welcome to Le Marina Bay 409 — a spacious 116m² two-bedroom suite with direct views of the Intracoastal Waterway, just 5 minutes on foot from Sunny Isles Beach.
-
-THE SPACE
-Bedroom 1 (Master): King bed, private en-suite bathroom, sliding glass doors opening directly onto the balcony with intracoastal views.
-Bedroom 2: 1 Queen bed + 1 Single bed, shared hallway bathroom, ceiling fan, wood floors.
-Living room: Open-plan with large black leather sectional, smart TV, and sliding glass doors to the balcony.
-Kitchen: Fully equipped with stainless steel appliances, granite countertops, coffee maker.
-Balcony: Large private terrace with dining table, sun loungers, ceiling fan, and unobstructed intracoastal views.
-
-BUILDING AMENITIES
-· Outdoor pool + hot tub on the intracoastal waterfront
-· Free parking (1 vehicle)
-· Beach towels, chairs, and umbrella provided
-
-LOCATION
-Between Miami (30 min) and Fort Lauderdale (25 min). Aventura Mall 10 min away. Sunny Isles Beach pier and restaurants are walking distance.
-
-HOUSE RULES
-· Minimum age 21 to book
-· No smoking anywhere on the property
-· Check-in 4:00 PM – 9:00 PM (late arrival fee after 9 PM)
-· Check-out by 10:00 AM
-· Maximum 6 guests`
-
-const INSTAGRAM_CAPTION = `Waking up to this every morning 🌊 Le Marina Bay 409 — 116m² with direct intracoastal views, king bed, outdoor pool, and 5 minutes to the beach. Midway between Miami and Fort Lauderdale. Link in bio to book. #SunnyIsles #LuxuryRental #FloridaVacation #AirbnbSuperhost #IntracoastalViews`
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 
@@ -553,7 +472,7 @@ export default function LeMarinaLanding() {
               desc="Private en-suite bathroom. Sliding glass doors open directly onto the balcony with unobstructed intracoastal views. Wood floors and dark wood furniture throughout."
             />
             <RoomCard
-              photo={img5}
+              photo={imgSecondBed}
               tag="Second Bedroom"
               title="Queen + Single · Flexible"
               beds="1 Queen bed + 1 Single bed"
@@ -766,30 +685,6 @@ export default function LeMarinaLanding() {
               stars={5}
               text="Superb location, superb apartment. The kitchen is fully equipped — we cooked every night with groceries from Publix five minutes away. Host communication was fast and clear throughout."
             />
-          </div>
-        </div>
-      </section>
-
-      {/* ── Listing Copy ── */}
-      <section style={{ background: LIGHT, padding: '0', borderTop: `1px solid ${BORDER}` }}>
-        <div className="section-inner" style={{ maxWidth: 1060, margin: '0 auto', padding: '80px 40px' }}>
-          <div style={{ marginBottom: 48 }}>
-            <span style={{
-              fontSize: 12, fontWeight: 700, letterSpacing: '0.1em',
-              color: GOLD, textTransform: 'uppercase',
-            }}>Ready to use</span>
-            <h2 style={{ fontSize: '2.4rem', fontWeight: 700, color: NAVY, marginTop: 8 }}>
-              Optimized listing copy
-            </h2>
-          </div>
-
-          <div
-            className="copy-grid"
-            style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 20 }}
-          >
-            <CopyBlock label="Airbnb Title" content={AIRBNB_TITLE} />
-            <CopyBlock label="Airbnb Description" content={AIRBNB_DESC} />
-            <CopyBlock label="Instagram Caption" content={INSTAGRAM_CAPTION} />
           </div>
         </div>
       </section>
