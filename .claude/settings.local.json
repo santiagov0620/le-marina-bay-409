@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Users\\\\santi\\\\OneDrive\\\\Documentos\\\\Claude\\\\Mundial sociales\\\\\" 2>/dev/null || dir \"C:\\\\Users\\\\santi\\\\OneDrive\\\\Documentos\\\\Claude\\\\Mundial sociales\\\\\")",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "mcp__Claude_in_Chrome__select_browser"
+    ]
+  }
+}
