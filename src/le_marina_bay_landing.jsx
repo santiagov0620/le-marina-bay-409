@@ -320,10 +320,141 @@ function ReviewCard({ name, flag, date, stars, text }) {
   )
 }
 
+// ─── Cookie Banner ─────────────────────────────────────────────────────────────
+
+function CookieBanner({ onDismiss, onOpenPrivacy }) {
+  return (
+    <div style={{
+      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 998,
+      background: 'rgba(7,30,48,0.97)', backdropFilter: 'blur(10px)',
+      borderTop: '1px solid rgba(255,255,255,0.1)',
+      padding: '14px 32px',
+      display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap',
+    }}>
+      <span style={{ color: 'rgba(255,255,255,0.72)', fontSize: 13, lineHeight: 1.6, flex: 1, minWidth: 220 }}>
+        This site embeds Google Maps, which may set cookies to render location data. See our{' '}
+        <button
+          onClick={onOpenPrivacy}
+          style={{ color: GOLD, background: 'none', border: 'none', cursor: 'pointer', fontSize: 13, padding: 0, textDecoration: 'underline' }}
+        >
+          Privacy Policy
+        </button>
+        {' '}for details.
+      </span>
+      <button
+        onClick={onDismiss}
+        style={{
+          background: GOLD, color: NAVY,
+          border: 'none', borderRadius: 20,
+          padding: '8px 24px', fontWeight: 700, fontSize: 13,
+          cursor: 'pointer', flexShrink: 0, transition: 'opacity 0.2s',
+        }}
+        onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
+        onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+      >
+        Got it
+      </button>
+    </div>
+  )
+}
+
+// ─── Privacy Policy Modal ───────────────────────────────────────────────────────
+
+function PrivacyModal({ onClose }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 1000,
+        background: 'rgba(7,30,48,0.75)', backdropFilter: 'blur(4px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '20px',
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: WHITE, borderRadius: 16,
+          maxWidth: 640, width: '100%', maxHeight: '80vh',
+          overflowY: 'auto', padding: '40px 40px 32px',
+          position: 'relative',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
+        }}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute', top: 16, right: 16,
+            background: 'none', border: 'none', cursor: 'pointer',
+            fontSize: 22, color: GRAY, lineHeight: 1,
+          }}
+          aria-label="Close privacy policy"
+        >
+          ×
+        </button>
+
+        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: GOLD, textTransform: 'uppercase' }}>
+          Legal
+        </span>
+        <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.8rem', color: NAVY, margin: '8px 0 24px' }}>
+          Privacy Policy
+        </h2>
+
+        {[
+          {
+            title: 'Who we are',
+            body: 'This website is a listing page for Le Marina Bay 409, a private vacation rental property located in Sunny Isles Beach, Florida. For privacy-related inquiries, contact: info@lemarinabay409.com',
+          },
+          {
+            title: 'What data we collect',
+            body: 'This website does not collect, store, or process any personal data directly. There are no registration forms, contact forms, or analytics trackers on this site.',
+          },
+          {
+            title: 'Google Maps',
+            body: 'This site embeds a Google Maps iframe to display the property location. When the map loads, Google may collect your IP address, browser information, and set cookies to provide the service. This is governed by Google\'s Privacy Policy at google.com/privacy. By continuing to use this site you acknowledge this use.',
+          },
+          {
+            title: 'Video content',
+            body: 'Videos are served from a content delivery network (Amazon CloudFront / AWS). Standard server logs (IP address, request time, bytes transferred) may be retained by the CDN provider for operational purposes. No personally identifiable information is shared with third parties.',
+          },
+          {
+            title: 'Fonts',
+            body: 'All fonts used on this site are self-hosted. No requests are made to Google Fonts or any external font service.',
+          },
+          {
+            title: 'External links',
+            body: 'This site links to Airbnb for booking. Once you navigate to Airbnb, their own privacy policy applies. We have no access to any data you provide to Airbnb.',
+          },
+          {
+            title: 'Your rights (GDPR)',
+            body: 'If you are located in the EU/EEA, you have the right to access, rectify, or erase any personal data we hold about you. Since we do not collect personal data directly, the only data to address would be what third-party services (Google Maps, AWS) may have collected. Please refer to their respective privacy policies.',
+          },
+          {
+            title: 'Changes to this policy',
+            body: 'This policy may be updated from time to time. The current version is effective as of June 2026.',
+          },
+        ].map(({ title, body }) => (
+          <div key={title} style={{ marginBottom: 22 }}>
+            <h3 style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{title}</h3>
+            <p style={{ fontSize: 13.5, color: GRAY, lineHeight: 1.75 }}>{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ─── Main Component ────────────────────────────────────────────────────────────
 
 export default function LeMarinaLanding() {
   const [headerScrolled, setHeaderScrolled] = useState(false)
+  const [cookieDismissed, setCookieDismissed] = useState(() => localStorage.getItem('cookieDismissed') === '1')
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+
+  const dismissCookie = () => {
+    localStorage.setItem('cookieDismissed', '1')
+    setCookieDismissed(true)
+  }
 
   useEffect(() => {
     const onScroll = () => setHeaderScrolled(window.scrollY > 60)
@@ -791,15 +922,30 @@ export default function LeMarinaLanding() {
         <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
           © 2026 Le Marina Bay 409 · Sunny Isles Beach, FL
         </span>
-        <a
-          href={AIRBNB_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: GOLD, fontSize: 13, textDecoration: 'none', fontWeight: 500 }}
-        >
-          View on Airbnb ↗
-        </a>
+        <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+          <button
+            onClick={() => setPrivacyOpen(true)}
+            style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer', padding: 0, transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}
+          >
+            Privacy Policy
+          </button>
+          <a
+            href={AIRBNB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: GOLD, fontSize: 13, textDecoration: 'none', fontWeight: 500 }}
+          >
+            View on Airbnb ↗
+          </a>
+        </div>
       </footer>
+
+      {!cookieDismissed && (
+        <CookieBanner onDismiss={dismissCookie} onOpenPrivacy={() => setPrivacyOpen(true)} />
+      )}
+      {privacyOpen && <PrivacyModal onClose={() => setPrivacyOpen(false)} />}
     </>
   )
 }

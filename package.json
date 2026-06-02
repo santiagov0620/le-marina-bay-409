@@ -11,6 +11,8 @@
     "deploy": "gh-pages -d dist -u \"github-actions-bot <support+actions@github.com>\""
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "framer-motion": "^11.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
