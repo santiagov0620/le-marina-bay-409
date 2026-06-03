@@ -1,3 +1,39 @@
+# Le Marina Bay 409 — robots.txt
 User-agent: *
 Allow: /
-Sitemap: https://santiagov0620.github.io/le-marina-bay-409/sitemap.xml
+
+# AI search & answer engines — explicitly welcome (citability)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://le-marina-bay-409.wild-fog-b2c5.workers.dev/sitemap.xml
