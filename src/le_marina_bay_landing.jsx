@@ -20,7 +20,7 @@ import imgSecondBed from './assets/1780355_second_bedroom.png' // second bedroom
 
 const PHOTOS = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10]
 
-const WORDS = ["stunning", "unforgettable", "breathtaking", "your escape", "paradise"]
+const WORDS = ["stunning", "spectacular", "breathtaking", "panoramic", "serene"]
 
 const AIRBNB_URL = "https://www.airbnb.es/rooms/51705710"
 
