@@ -36,4 +36,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://le-marina-bay-409.wild-fog-b2c5.workers.dev/sitemap.xml
+Sitemap: https://lemarinabay409.com/sitemap.xml

@@ -2,6 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "le-marina-bay-409",
   "compatibility_date": "2026-06-02",
+  "routes": [
+    { "pattern": "lemarinabay409.com", "custom_domain": true },
+    { "pattern": "www.lemarinabay409.com", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   },
