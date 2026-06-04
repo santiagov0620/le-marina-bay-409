@@ -17,6 +17,12 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Boot splash: branded navy screen covers the crawlable fallback until React mounts -->
+    <style>
+      @keyframes lmbBootPulse { 0%, 100% { opacity: 0.5 } 50% { opacity: 1 } }
+    </style>
+    <noscript><style>#lmb-boot-splash{display:none !important}</style></noscript>
+
     <!-- Open Graph (Facebook, WhatsApp, iMessage, LinkedIn) -->
     <meta property="og:type"        content="website" />
     <meta property="og:url"         content="https://lemarinabay409.com/" />
@@ -127,6 +133,14 @@
         <p style="font-size:16px;line-height:1.65;color:#C7D7E6;margin:0 0 28px;">Airbnb Superhost rated 4.9 out of 5 stars across 48 verified reviews, with international guests from Argentina, the United Kingdom, and France.</p>
         <p style="margin:0;"><a href="https://www.airbnb.es/rooms/51705710" rel="noopener noreferrer" style="color:#C9A84C;font-size:17px;font-weight:600;">Check availability &amp; book on Airbnb ↗</a></p>
       </main>
+      <div id="lmb-boot-splash" style="position:fixed;inset:0;z-index:2147483647;background:#0B2F4E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;">
+        <svg width="88" height="88" viewBox="0 0 32 32" fill="none" style="animation:lmbBootPulse 1.6s ease-in-out infinite;">
+          <path d="M3 20C7 14 11 26 16 20C21 14 25 26 29 20" stroke="#C9A84C" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M3 12C7 6 11 18 16 12C21 6 25 18 29 12" stroke="#C9A84C" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <div style="color:#ffffff;font-size:15px;letter-spacing:4px;font-weight:600;">LE MARINA BAY 409</div>
+        <div style="color:#9FB6CC;font-size:11px;letter-spacing:3px;">SUNNY ISLES BEACH · FLORIDA</div>
+      </div>
     </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
