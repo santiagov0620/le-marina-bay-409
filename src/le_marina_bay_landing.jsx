@@ -6,19 +6,20 @@ const ROOM_TOUR_VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_3Aj4Jh3qC
 const PROMO_REEL_VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_3Aj4Jh3qCab9pV2kCQn8UPSl5e8/hf_20260602_003052_d4602b0f-b063-4743-8cb6-8b8a07c8d13c.mp4"
 
 // ─── Photo imports ─────────────────────────────────────────────────────────────
-import img1  from './assets/1780355563989_image.png'  // balcony hero — intracoastal view
-import img2  from './assets/1780355628654_image.png'  // master bedroom — king bed + canal view
-import img3  from './assets/1780355580057_image.png'  // living room full length
-import img4  from './assets/1780355618250_image.png'  // dining room + pendant light
-import img5  from './assets/1780355636137_image.png'  // living room with canal view through glass
-import img6  from './assets/1780355657594_image.png'  // balcony wide with loungers + dining table
-import img7  from './assets/1780355677017_image.png'  // intracoastal panoramic view
-import img8  from './assets/1780355707985_image.png'  // pool aerial view
-import img9  from './assets/1780355898792_image.png'  // pool close-up
-import img10 from './assets/1780355911726_image.png'  // building exterior front
-import imgSecondBed from './assets/1780355_second_bedroom.png' // second bedroom — queen + single beds
+// Property photos — June 2026 lifestyle set
+import heroToast         from './assets/view-sunset-toast.jpg'    // sunset toast over the Intracoastal
+import balconyBreakfast  from './assets/balcony-breakfast.jpg'    // breakfast on the balcony
+import balconySunset     from './assets/balcony-sunset.jpg'       // balcony dining at sunset
+import balconyDay        from './assets/balcony-day.jpg'          // balcony with daytime view
+import viewTwilight      from './assets/view-twilight.jpg'        // skyline at twilight
+import bedroomMaster     from './assets/bedroom-master.jpg'       // master bedroom + sunset view
+import livingRoom        from './assets/living-room.jpg'          // living room + balcony view
+import bedroomSecond     from './assets/bedroom-second.jpg'       // second bedroom (two beds)
+import bedroomMasterView from './assets/bedroom-master-view.jpg'  // master bedroom — daytime view
+import bedroomMasterArt  from './assets/bedroom-master-art.jpg'   // master bedroom — king bed
+import poolClose         from './assets/1780355898792_image.png'  // pool — close-up (kept for Pool card)
 
-const PHOTOS = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10]
+const PHOTOS = [heroToast, balconyBreakfast, balconySunset, balconyDay, viewTwilight, bedroomMaster, livingRoom, bedroomSecond, bedroomMasterView, bedroomMasterArt]
 
 const WORDS = ["stunning", "spectacular", "breathtaking", "panoramic", "serene"]
 
@@ -645,28 +646,28 @@ export default function LeMarinaLanding() {
             }}
           >
             <RoomCard
-              photo={img2}
+              photo={bedroomMaster}
               tag="Master Bedroom"
               title="King Bed · En-suite · Balcony"
               beds="1 King bed"
-              desc="Private en-suite bathroom. Sliding glass doors open directly onto the balcony with unobstructed intracoastal views. Wood floors and dark wood furniture throughout."
+              desc="Private en-suite bathroom. Sliding glass doors open directly onto the balcony with unobstructed intracoastal views — wake to the sunrise over the water. Light wood floors and a calm, coastal palette throughout."
             />
             <RoomCard
-              photo={imgSecondBed}
+              photo={bedroomSecond}
               tag="Second Bedroom"
               title="Queen + Single · Flexible"
               beds="1 Queen bed + 1 Single bed"
               desc="Ceiling fan, wood floors. Shared hallway bathroom (not en-suite). Comfortable for couples or two guests sharing."
             />
             <RoomCard
-              photo={img3}
+              photo={livingRoom}
               tag="Living Room & Kitchen"
               title="Open-plan · Smart TV · Full Kitchen"
               beds={null}
-              desc="Large black leather sectional, Smart TV, and sliding glass doors to the balcony with intracoastal views. Fully equipped kitchen with stainless steel appliances and granite countertops."
+              desc="Plush sectional sofa, Smart TV, and sliding glass doors to the balcony with intracoastal views. Fully equipped kitchen with stainless steel appliances and granite countertops."
             />
             <RoomCard
-              photo={img9}
+              photo={poolClose}
               tag="Pool & Common Areas"
               title="Outdoor Pool · Hot Tub · Waterfront"
               beds={null}
