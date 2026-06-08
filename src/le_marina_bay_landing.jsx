@@ -14,12 +14,14 @@ import balconyDay        from './assets/balcony-day.jpg'          // balcony wit
 import viewTwilight      from './assets/view-twilight.jpg'        // skyline at twilight
 import bedroomMaster     from './assets/bedroom-master.jpg'       // master bedroom + sunset view
 import livingRoom        from './assets/living-room.jpg'          // living room + balcony view
+import livingDining      from './assets/living-dining.jpg'        // living + dining + open kitchen
+import kitchenCabinets   from './assets/kitchen.jpg'              // kitchen / pantry detail
 import bedroomSecond     from './assets/bedroom-second.jpg'       // second bedroom (two beds)
 import bedroomMasterView from './assets/bedroom-master-view.jpg'  // master bedroom — daytime view
 import bedroomMasterArt  from './assets/bedroom-master-art.jpg'   // master bedroom — king bed
 import poolClose         from './assets/1780355898792_image.png'  // pool — close-up (kept for Pool card)
 
-const PHOTOS = [heroToast, balconyBreakfast, balconySunset, balconyDay, viewTwilight, bedroomMaster, livingRoom, bedroomSecond, bedroomMasterView, bedroomMasterArt]
+const PHOTOS = [heroToast, balconyBreakfast, balconySunset, balconyDay, viewTwilight, bedroomMaster, livingRoom, livingDining, kitchenCabinets, bedroomSecond, bedroomMasterView, bedroomMasterArt]
 
 const WORDS = ["stunning", "spectacular", "breathtaking", "panoramic", "serene"]
 
